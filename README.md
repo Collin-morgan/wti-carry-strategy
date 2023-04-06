@@ -40,7 +40,7 @@ The full implementation is provided in the Python script `wti_carry_strategy.py`
 - Regime-based strategy backtesting
 - Output of PnL and return metrics
 
-All intermediate and final results are stored in the `results/` directory.
+All intermediate and final results are stored in the `results` directory.
 
 ## Acknowledgements
 
