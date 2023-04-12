@@ -48,4 +48,4 @@ This project is based on methodology and insights introduced by Dr. I. Bouchouev
 
 ## Disclaimer
 
-This strategy is strictly for educational and research purposes. It is a simulation only. No part of this model should be used for live trading or financial decision-making without independent verification. The author does not assume responsibility for any financial loss resulting from use of this code or methodology.
+This strategy is strictly for educational and research purposes. It is a simulation only. No part of this model should be used for live trading or financial decision-making.
