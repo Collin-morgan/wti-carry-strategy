@@ -51,3 +51,5 @@ This project is based on methodology and insights introduced by Dr. I. Bouchouev
 ## Disclaimer
 
 This strategy is strictly for educational and research purposes. It is a simulation only. No part of this model should be used for live trading or financial decision-making.
+
+## Maintenance Log
