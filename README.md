@@ -53,3 +53,4 @@ This project is based on methodology and insights introduced by Dr. I. Bouchouev
 This strategy is strictly for educational and research purposes. It is a simulation only. No part of this model should be used for live trading or financial decision-making.
 
 ## Maintenance Log
+- 2024-03-19 — reviewed roll logic against current contract calendar; no changes required.
