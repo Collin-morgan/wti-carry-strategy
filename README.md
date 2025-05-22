@@ -54,3 +54,5 @@ This strategy is strictly for educational and research purposes. It is a simulat
 
 ## Maintenance Log
 - 2024-03-19 — reviewed roll logic against current contract calendar; no changes required.
+- 2024-10-08 — refreshed dependency notes; backtest reproduces prior results.
+- 2025-05-22 — verified strategy notebook still runs end to end.
