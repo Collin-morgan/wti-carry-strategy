@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
 
-# === LOAD DATA ===
+
 datos = pd.read_csv("data/datos_1_y_prior_to_20240613.csv")
 last_Day = pd.read_csv("data/last_Day_1_y_prior_to_20240613.csv")
 
@@ -12,11 +12,11 @@ datos['date'] = pd.to_datetime(datos['date'])
 last_Day['lastBusinessDay'] = pd.to_datetime(last_Day['lastBusinessDay'])
 last_Day['lastTradingDay'] = pd.to_datetime(last_Day['lastTradingDay'])
 
-# === DUPLICATE FIRST ROW OF last_Day FOR ALIGNMENT ===
+
 r1 = {'lastBusinessDay': last_Day.loc[0, 'lastBusinessDay'], 'lastTradingDay': last_Day.loc[0, 'lastTradingDay']}
 last_Day = pd.concat([pd.DataFrame([r1]), last_Day], ignore_index=True)
 
-# === SYNTHETIC CONTRACT CREATION ===
+
 datos['FrontSynthetic'] = 0
 datos['ThirteenthSynthetic'] = 0
 
@@ -40,7 +40,7 @@ else:
     datos.loc[indE, 'FrontSynthetic'] = datos.loc[indE, 'SecondMonth'] + roll_diff_F
     datos.loc[indE, 'ThirteenthSynthetic'] = datos.loc[indE, 'FourteenthMonth'] + roll_diff_T
 
-# Fill in all prior rows
+
 for ind in range(indE - 1, -1, -1):
     if datos.loc[ind, 'date'] == last_Day.loc[indT, 'lastTradingDay']:
         indT -= 1
@@ -56,12 +56,12 @@ for ind in range(indE - 1, -1, -1):
         datos.loc[ind, 'FrontSynthetic'] = datos.loc[ind, 'FrontMonth'] + roll_diff_F
         datos.loc[ind, 'ThirteenthSynthetic'] = datos.loc[ind, 'ThirteenthMonth'] + roll_diff_T
 
-# === CARRY CALCULATIONS ===
+
 datos['Carry'] = datos['FrontSynthetic'] - datos['ThirteenthSynthetic']
 datos['CarrySMA20'] = datos['Carry'].rolling(20).mean()
 datos['CarryMom'] = datos['Carry'] - datos['CarrySMA20']
 
-# === BACKTEST STRATEGIES ===
+
 def backtest_strategy(df, signal_column, start_index, end_index):
     pos = 0
     open_p = df.loc[start_index, 'FrontSynthetic']
@@ -86,7 +86,7 @@ start_idx, end_idx = 59, 318
 carry_results, carry_cross = backtest_strategy(datos, 'Carry', start_idx, end_idx)
 carry_mom_results, carry_mom_cross = backtest_strategy(datos, 'CarryMom', start_idx, end_idx)
 
-# === OUTPUT BASIC METRICS ===
+
 print("Carry Strategy Total PnL:", round(carry_results.PnL.sum(), 2))
 print("Carry Strategy Total Return (%):", round(carry_results.logPnL.sum() * 100, 2))
 print("Carry-Momentum Strategy Total PnL:", round(carry_mom_results.PnL.sum(), 2))
