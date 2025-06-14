@@ -31,6 +31,8 @@ Positions are updated daily, and the strategy rolls on the last business day of 
 | Total Log-Return (%)               | 14.61%              | 21.93%                   |
 | Net PnL (3 MCL contracts after fees) | ~$3,226             | ~$4,900                  |
 
+![WTI Carry Strategy Performance Chart](https://github.com/Collin-morgan/wti-carry-strategy/blob/main/wti_carry_momentum_chart.png?raw=true)
+
 ## Implementation
 
 The full implementation is provided in the Python script `wti_carry_strategy.py`. This script handles:
